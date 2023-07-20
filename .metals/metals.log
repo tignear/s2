@@ -1,0 +1,39 @@
+2023.07.19 16:04:50 INFO  Started: Metals version 0.11.12 in workspace 'C:\Users\kusah\OneDrive\Documents\s2' for client Visual Studio Code 1.80.1.
+Jul 19, 2023 4:04:50 PM org.flywaydb.core.internal.license.VersionPrinter printVersionOnly
+INFO: Flyway Community Edition 9.16.3 by Redgate
+Jul 19, 2023 4:04:50 PM org.flywaydb.core.internal.license.VersionPrinter printVersion
+INFO: See release notes here: https://rd.gt/416ObMi
+Jul 19, 2023 4:04:50 PM org.flywaydb.core.internal.license.VersionPrinter printVersion
+INFO: 
+Jul 19, 2023 4:04:51 PM org.flywaydb.core.internal.database.base.BaseDatabaseType createDatabase
+INFO: Database: jdbc:h2:file:C:\Users\kusah\OneDrive\Documents\s2\.metals\metals (H2 2.1)
+Jul 19, 2023 4:04:51 PM org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+INFO: Schema history table "PUBLIC"."flyway_schema_history" does not exist yet
+Jul 19, 2023 4:04:51 PM org.flywaydb.core.internal.command.DbValidate validate
+INFO: Successfully validated 4 migrations (execution time 00:00.035s)
+Jul 19, 2023 4:04:51 PM org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+INFO: Creating Schema History table "PUBLIC"."flyway_schema_history" ...
+Jul 19, 2023 4:04:51 PM org.flywaydb.core.internal.command.DbMigrate migrateGroup
+INFO: Current version of schema "PUBLIC": << Empty Schema >>
+Jul 19, 2023 4:04:51 PM org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+INFO: Migrating schema "PUBLIC" to version "1 - Create tables"
+Jul 19, 2023 4:04:51 PM org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+INFO: Migrating schema "PUBLIC" to version "2 - Server discovery"
+Jul 19, 2023 4:04:51 PM org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+INFO: Migrating schema "PUBLIC" to version "3 - Jar symbols"
+Jul 19, 2023 4:04:51 PM org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+INFO: Migrating schema "PUBLIC" to version "4 - Fingerprints"
+Jul 19, 2023 4:04:51 PM org.flywaydb.core.internal.command.DbMigrate logSummary
+INFO: Successfully applied 4 migrations to schema "PUBLIC", now at version v4 (execution time 00:00.093s)
+2023.07.19 16:04:51 INFO  time: initialize in 1.29s
+2023.07.19 16:04:52 WARN  Build server is not auto-connectable.
+2023.07.19 16:04:52 WARN  no build tool detected in workspace 'C:\Users\kusah\OneDrive\Documents\s2'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+Jul 19, 2023 4:06:16 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+Jul 19, 2023 4:06:19 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+Jul 19, 2023 4:06:30 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+2023.07.19 16:07:01 INFO  Shutting down server
+2023.07.19 16:07:01 INFO  shutting down Metals
+2023.07.19 16:07:01 INFO  Exiting server
