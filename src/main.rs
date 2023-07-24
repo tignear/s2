@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 use std::f64::consts::PI;
-const dt: f64 = 0.000001;
+const dt: f64 = 0.0000001;
 const G: f64 = 79E9;
 const d_d: f64 = 0.15;
 const A: f64 = PI / 4.0 * d_d * d_d;
@@ -88,18 +88,24 @@ impl ComputeEnv {
 }
 fn compute_f0(omega: f64) -> (f64, f64) {
     let mut F0_min = 0.0;
-    let mut F0_max = 1000000.0;
+    let mut F0_max = 1000.0;
     let mut F0 = 0.0;
     let mut d = 0.0;
-    for _ in 0..100 {
+    const target_step: i32 = 3000000;
+    for it in 0..100 {
+        eprintln!("{omega}:{it}");
         F0 = F0_max / 2.0 + F0_min / 2.0;
         let mut env = ComputeEnv {
             F0,
-            n: 1000.0,
+            n: 100.0,
             cache_dxdt: HashMap::new(),
             cache_x: HashMap::new(),
         };
-        let left = env.dxdt(300000);
+        for step in -target_step..target_step{
+            env.dxdt(step);
+            
+        }
+        let left = env.dxdt(target_step);
 
         let right = l * (omega - l * F0 / I);
         if left > right {
@@ -108,7 +114,7 @@ fn compute_f0(omega: f64) -> (f64, f64) {
             F0_min = F0;
         }
         d = (left - right).abs();
-        if d < 0.01 {
+        if d < 1.0 {
             break;
         }
     }
@@ -118,8 +124,8 @@ fn compute_f0(omega: f64) -> (f64, f64) {
 fn sub_main() {
     //2.0 * PI * 33.0;
 
-    for s in 0..66 {
-        let omega = PI * f64::from(s);
+    for s in 0..6 {
+        let omega = PI * f64::from(s)*11.0;
         let (F0, d) = compute_f0(omega);
 
         println!("{},{},{}", omega, F0, d);
