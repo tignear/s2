@@ -37,11 +37,21 @@ pub fn solve_rk4(tx: f64, n: i32, phi_n_n: f64, F0: f64) -> Vec<(f64, f64)> {
     let h = tx / n as f64;
     let mut x = 0.;
     let mut dxdt = 0.;
+    let mut sign_positive = false;
+    let mut cnt = 0;
     let mut r = Vec::new();
-    for step in -n..n {
+    for step in -n..(n) {
         let env = ComputeEnv { F0, n: phi_n_n };
-        (x, dxdt) = env.rk4(h * f64::from(step), x, dxdt, h);
-        r.push((h * f64::from(step), x));
+        let t = h * f64::from(step);
+        (x, dxdt) = env.rk4(t, x, dxdt, h);
+        if t > 0. && cnt < 4{
+            if dxdt.is_sign_positive() != sign_positive {
+                eprintln!("{t}:{x}");
+                cnt=cnt+1;
+            }
+            sign_positive = dxdt.is_sign_positive();
+        }
+        println!("{}\t{}", h * f64::from(step), x);
     }
     r
 }

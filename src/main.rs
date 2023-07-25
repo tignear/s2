@@ -44,7 +44,7 @@ impl ComputeEnv {
         let r = match self.cache_dxdt.get(&step) {
             Some(dxdt) => *dxdt,
             None => {
-                if t < -0.3 {
+                if t < -0.013 {
                     return 0.0;
                 }
 
@@ -68,7 +68,7 @@ impl ComputeEnv {
 }
 fn compute_f0(omega: f64, n: f64) -> (f64, f64) {
     let mut F0_min = 0.0;
-    let mut F0_max = 1000.0;
+    let mut F0_max = 100000.0;
     let mut F0 = 0.0;
     let mut d = 0.0;
     const target_step: i32 = 300000;
@@ -102,25 +102,24 @@ fn compute_f0(omega: f64, n: f64) -> (f64, f64) {
 
 fn sub_main() {
     //2.0 * PI * 33.0;
-    let n = 100.;
+    let n = 100000.;
     for s in 0..6 {
         let omega = PI * f64::from(s) * 11.0;
         let (F0, d) = compute_f0(omega, n);
-        let xs = der::solve_rk4(0.01, 10000, n, F0);
         println!(
-            "{},{},{},{:?},{}",
+            "{},{},{}",
             omega,
             F0,
-            xs.iter().map(|(t, x)| *x).fold(0.0 / 0.0, f64::max),
-            xs,
             d
         );
     }
 }
 fn main() {
-    let xs = der::solve_rk4(0.3, 10000, 100.0, 340.);
-    xs.iter().for_each(|(t,x)|println!("{t}\t{x}"));
-    return;
+    if false{
+        let xs: Vec<(f64, f64)> = der::solve_rk4(0.2, 100000, 100000.0, 340.);
+        return;
+    }
+
     const STACK_SIZE: usize = 512 * 1024 * 1024;
     std::thread::Builder::new()
         .stack_size(STACK_SIZE)
