@@ -118,7 +118,7 @@ fn sub_main() {
     }
 }
 fn main() {
-    let xs = der::solve_rk4(0.3, 10000, 100.0, 30.);
+    let xs = der::solve_rk4(0.3, 10000, 100.0, 340.);
     xs.iter().for_each(|(t,x)|println!("{t}\t{x}"));
     return;
     const STACK_SIZE: usize = 512 * 1024 * 1024;
