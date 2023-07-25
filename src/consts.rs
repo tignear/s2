@@ -1,6 +1,6 @@
 use std::f64::consts::PI;
 
-pub const dt: f64 = 0.000001;
+pub const dt: f64 = 0.0000001;
 pub const G: f64 = 79E9;
 pub const d_d: f64 = 0.15;
 pub const A: f64 = PI / 4.0 * d_d * d_d;

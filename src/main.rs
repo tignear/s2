@@ -103,20 +103,21 @@ fn compute_f0(omega: f64, n: f64) -> (f64, f64) {
 fn sub_main() {
     //2.0 * PI * 33.0;
     let n = 100000.;
-    for s in 0..6 {
-        let omega = PI * f64::from(s) * 11.0;
+    for s in 0..=5 {
+        let omega = 20. * PI * f64::from(s);
         let (F0, d) = compute_f0(omega, n);
-        println!(
+        der::solve_rk4(0.013, 100000, 100000.0, F0);
+
+        /*println!(
             "{},{},{}",
             omega,
             F0,
             d
-        );
+        );*/
     }
 }
 fn main() {
     if false{
-        let xs: Vec<(f64, f64)> = der::solve_rk4(0.2, 100000, 100000.0, 340.);
         return;
     }
 
