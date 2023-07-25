@@ -71,7 +71,7 @@ fn compute_f0(omega: f64, n: f64) -> (f64, f64) {
     let mut F0_max = 100000.0;
     let mut F0 = 0.0;
     let mut d = 0.0;
-    const target_step: i32 = 300000;
+    const target_step: i32 = 130000;
     for it in 0..100 {
         eprintln!("{omega}:{it}");
         F0 = F0_max / 2.0 + F0_min / 2.0;
